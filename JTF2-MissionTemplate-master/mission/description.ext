@@ -1,0 +1,107 @@
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 32;
+};
+
+// Don't allow any AI units.
+disabledAI = true;
+enableDebugConsole = 1;  // Admins and hosts
+
+onLoadName = "JTF2 Dynamic Ops";
+onLoadMission = "Mission template for running JTF2 ops with a GM";
+author = "Anton Struyk";
+loadScreen = "logo.paa";
+
+respawn = "BASE";
+respawndelay = 5;
+respawnDialog = 0;
+respawnOnStart = 1;
+joinUnassigned = 1;
+respawnTemplates[] = { "MenuPosition" };
+respawnTemplatesCiv[] = { "Spectator" };
+
+class Params
+{
+	class jtf2_param_add_objects_to_zeus
+	{
+		title = "Add objects to Zeus automatically?";
+		values[] = { 0, 1 };
+		texts[] = { "No", "Yes" };
+		default = 1;
+	};
+
+	class jtf2_param_starting_loadouts
+	{
+		title = "Starting equipment";
+		values[] = { 0, 1 };
+		texts[] = { "JTF2 Custom Loadouts", "Default ARMA Loadouts" };
+		default = 0;
+	};
+
+	class jtf2_param_allow_grass_changes
+	{
+		title = "Allow players to change grass view settings";
+		values[] = { 0, 1, 2 };
+		texts[] = { "No", "Yes - But don't let them turn it off completely", "Yes - allow everything" };
+		default = 0;
+	};
+	
+	class jtf2_param_create_spawn
+	{
+		title = "Create spawn points automatically?";
+		values[] = { 0, 1 };
+		texts[] = { "No", "Yes" };
+		default = 0;
+	};
+
+	class jtf2_param_respawn_tickets
+	{
+		title = "Number of Respawns";
+		values[] = { -1, 0, 1, 5, 10, 15, 20 };
+		texts[] = { "Unlimited", "No Respawns", "1 Respawn", "5 Respawns", "10 Respawns", "15 Respawns", "20 Respawns" };
+		default = -1;
+	};
+	
+	class jtf2_param_ace_map_spacer
+	{
+		title = "--------------------- ACE MAP OPTIONS ----------------------------";
+		values[] = { 0, 1 };
+		texts[] = { " ", " " };
+		default = 0;
+	};
+	
+	class jtf2_param_ace_show_squad_map_markers
+	{
+		title = "Show friendly squad markers on map?";
+		values[] = { 0, 1 };
+		texts[] = { "No", "Yes" };
+		default = 1;
+	};
+	
+	class jtf2_param_ace_medical_spacer
+	{
+		title = "--------------------- ACE MEDICAL OPTIONS ----------------------------";
+		values[] = { 0, 1 };
+		texts[] = { " ", " " };
+		default = 0;
+	};
+
+	class jtf2_param_ace_medical_level
+	{
+		title = "Simulation Level";
+		values[] = { 0, 1 };
+		texts[] = { "Simple", "Advanced" };
+		default = 0;
+	};
+};
+
+#include "taw_vd\dialog.hpp"
+#include "spectator\spectating.hpp"
+
+class CfgFunctions
+{
+	#include "jtf2\cfgFunctionsInclude.hpp"
+	#include "taw_vd\CfgFunctions.hpp"
+};
